@@ -1,0 +1,9 @@
+{% autoescape off %}
+
+Hi, {{ username }},
+
+You have received a new form response. Please follow the link bellow to see the response detail.
+
+Link: http://{{ domain }}/forms/response/{{uuid}}/details
+
+{% endautoescape %}

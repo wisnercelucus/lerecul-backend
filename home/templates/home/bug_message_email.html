@@ -1,0 +1,23 @@
+{% load i18n %}
+
+{% autoescape off %}
+
+{% trans "Hi, Team Le Recul," %}
+
+{% blocktrans %} You have received a new new bug of type: {{ bug_type}} from: {{ full_name }}. {% endblocktrans %}
+
+{% trans "Here is the report message:" %}
+
+---------------------------------------------------------------------------
+
+{{ message }}
+
+---------------------------------------------------------------------------
+
+
+{% trans "Sincerly yours," %}
+
+{% trans "Smartly Admin" %}
+
+
+{% endautoescape %}

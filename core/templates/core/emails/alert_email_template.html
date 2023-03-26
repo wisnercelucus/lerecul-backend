@@ -1,0 +1,19 @@
+{% load i18n %}
+
+{% autoescape off %}
+
+{% blocktrans %} Hi, {{username}}, {% endblocktrans %}
+
+
+---------------------------------------------------------------------------
+
+{{ message }}
+
+---------------------------------------------------------------------------
+
+{% trans "Sincerly yours," %}
+
+{% trans "Team," %}
+
+{% endautoescape %}
+

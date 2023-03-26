@@ -1,0 +1,153 @@
+from core.api.serializers.lookup_serializer import get_lookups_data
+from rest_framework import serializers
+from core.models import Banner as LOCAL_MODEL, Activity, Strength
+from accounts.api.serializers.user_serialisers import UserNameSerializer, UserSlimSerializer
+from core.api.serializers.activities_serializers import HomeActivityModelSerializer
+from core.api.serializers.strengths_serializers import HomeStrengthModelSerializer
+from documents.api.images_serializers import FeaturedImageModelSerializer
+from documents.models import FeaturedImage
+from django.contrib.contenttypes.models import ContentType
+
+
+class HomeBannerModelSerializer(serializers.ModelSerializer):
+    activities = serializers.SerializerMethodField()
+    strengths = serializers.SerializerMethodField()
+    banner_images = serializers.SerializerMethodField()
+
+    class Meta:
+        model = LOCAL_MODEL
+        fields = ['banner_images', 'name', 'title', 'slogan', 'activities', 'strengths',]
+
+    def get_activities(self, obj):
+        activities = Activity.objects.filter(in_slider=True)
+        return HomeActivityModelSerializer(activities, many=True).data
+
+    def get_strengths(self, obj):
+        strengths = Strength.objects.filter(in_slider=True)
+        return HomeStrengthModelSerializer(strengths, many=True).data
+
+    def get_banner_images(self, obj):
+        model_qs = ContentType.objects.filter(app_label=obj._meta.app_label, model=obj._meta.model_name)
+        #print(model_qs)
+        content_type = model_qs.first()
+        images = FeaturedImage.objects.filter(
+                        content_type = content_type,
+                        object_id=obj.id
+                        )
+        return FeaturedImageModelSerializer(images, many=True).data
+
+
+class BannerModelSerializer(serializers.ModelSerializer):
+    is_owned = serializers.SerializerMethodField()
+
+    class Meta:
+        model = LOCAL_MODEL
+        fields = '__all__'
+
+    def get_is_owned(self, obj):
+        request = self.context.get("request")
+        if request:
+            user = request.user
+            if user:
+                return obj.owner == user
+        return False
+
+class BannerCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LOCAL_MODEL
+        fields = '__all__'
+
+
+class BannerDetailsSerializer(serializers.ModelSerializer):
+    owner = UserSlimSerializer(read_only=True)
+    updated_by = UserSlimSerializer(read_only=True)
+    content_type = serializers.SerializerMethodField()
+    app_label = serializers.SerializerMethodField()
+    is_owned = serializers.SerializerMethodField()
+    lookups = serializers.SerializerMethodField()
+
+    class Meta:
+        model = LOCAL_MODEL
+        exclude = ('deleted_at',)
+
+    def get_content_type(self, obj):
+        model_name = obj._meta.model_name
+        return model_name
+
+    def get_app_label(self, obj):
+        app_label = obj._meta.app_label
+        return app_label
+
+    def get_is_owned(self, obj):
+        request = self.context.get("request")
+        if request:
+            user = request.user
+            if user:
+                return obj.owner == user
+        return False
+
+
+    def get_lookups(self, obj):
+        return get_lookups_data(obj)
+
+
+class BannerSlimSerializer(serializers.ModelSerializer):
+    uuid = serializers.SerializerMethodField()
+    object_model = serializers.SerializerMethodField()
+    frontend_root = serializers.SerializerMethodField()
+
+    class Meta:
+        model = LOCAL_MODEL
+        fields = ['uuid', 'name', 'object_model', 'id', '_id', 'frontend_root',]
+
+    def get_uuid(self, obj):
+        return obj._id
+
+    def get_object_model(self, obj):
+        return obj._meta.model_name
+
+    def get_frontend_root(self, obj):
+        return 'banners'
+
+class BannerNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LOCAL_MODEL
+        fields = ['name',]
+
+class BannerFormoLookupsSerializer(serializers.ModelSerializer):
+    uuid = serializers.SerializerMethodField()
+
+    class Meta:
+        model = LOCAL_MODEL
+        fields = ['uuid', '_id', 'id', 'name',]
+
+    def get_uuid(self, obj):
+        return obj._id
+
+
+class BannerTableModelSerializer(serializers.ModelSerializer):
+    owner = UserNameSerializer(read_only=True)
+    updated_by = UserNameSerializer(read_only=True)
+    is_owned = serializers.SerializerMethodField()
+
+    
+    class Meta:
+        model = LOCAL_MODEL
+        fields = ['created_at', 
+                    'updated_at', 
+                    'is_owned', 
+                    'owner', 
+                    'updated_by',
+                    'name',
+                    'title',
+                    'slogan',
+                    '_id', 
+                    'id',]
+
+    def get_is_owned(self, obj):
+        request = self.context.get("request")
+        if request:
+            user = request.user
+            if user:
+                return obj.owner == user
+        return False

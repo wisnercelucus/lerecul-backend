@@ -1,0 +1,116 @@
+1
+
+
+You cannot directly do this on the digital ocean server for a lot of reasons, u need to use a supervisor to start, monitor and restart the celery service. I assume u are using redis as your message broker so u can ssh into ur server and start by running the command below
+
+sudo apt update
+sudo apt install redis-server
+redis-cli ping
+After entering the last command the console should output PONG This is to ensure redis is up and running.
+
+NEXT PHASE Now u need to install a supervisor that will monitor, start, stop or restart any service u want on your server, and in this case the service we care about is celery_worker and celery_beat. So run the command below to install the supervisor
+
+sudo apt-get install supervisor
+When the installation is complete run the command below
+
+sudo service supervisor status
+And you should get an ouptut like this
+
+supervisor.service - Supervisor process control system for UNIX
+Loaded: loaded (/lib/systemd/system/supervisor.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sat 2018-05-19 15:27:28 UTC; 1min 16s ago
+     Docs: http://supervisord.org
+ Main PID: 592 (supervisord)
+   CGroup: /system.slice/supervisor.service
+           └─592 /usr/bin/python /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+
+May 19 15:27:28 djangobin-ubuntu systemd[1]: Started Supervisor process control system for UNIX.
+May 19 15:27:28 djangobin-ubuntu supervisord[592]: 2018-05-19 15:27:28,830 CRIT Supervisor running a
+May 19 15:27:28 djangobin-ubuntu supervisord[592]: 2018-05-19 15:27:28,831 WARN No file matches via 
+May 19 15:27:28 djangobin-ubuntu supervisord[592]: 2018-05-19 15:27:28,847 INFO RPC interface 'super
+May 19 15:27:28 djangobin-ubuntu supervisord[592]: 2018-05-19 15:27:28,847 CRIT Server 'unix_http_se
+May 19 15:27:28 djangobin-ubuntu supervisord[592]: 2018-05-19 15:27:28,848 INFO supervisord started
+Now ensure u are in the root directory ( u can check by running ls and u should see directories like this bin  boot  dev  etc  home  lib  lib32  lib64  libx32  lost+found  media  mnt  opt  proc  root  run  sbin  snap  srv  sys  tmp  usr). In the root directory u will create your configuration file with the command below
+
+echo_supervisord_conf > ./djangobin.conf
+Use the command below to move the new file to the supervisor directory
+
+sudo mv djangobin.conf /etc/supervisor/conf.d/
+Use the command below to open the file
+
+nano /etc/supervisor/conf.d/djangobin.conf
+This file contains a lot of content and sections but we don't need all for what we want to do so you have to delete all except the section name [supervisord]. After removing the irrelevant sections the file should now look like this
+
+[supervisord]
+logfile=/tmp/supervisord.log ; (main log file;default $CWD/supervisord.log)
+logfile_maxbytes=50MB        ; (max main logfile bytes b4 rotation;default 50MB)
+logfile_backups=10           ; (num of main logfile rotation backups;default 10)
+loglevel=info                ; (log level;default info; others: debug,warn,trace)
+pidfile=/tmp/supervisord.pid ; (supervisord pidfile;default supervisord.pid)
+nodaemon=false               ; (start in foreground if true;default false)
+minfds=1024                  ; (min. avail startup file descriptors;default 1024)
+minprocs=200                 ; (min. avail process descriptors;default 200)
+Next we are going to add the programs we want supervisor to monitor so u can copy and paste the content below
+
+[program:celery_worker]
+command=/home/your_user/venv/bin/celery -A project worker -l info
+directory=/home/your_user/django_project
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/celery.err.log
+stdout_logfile=/var/log/celery.out.log
+
+
+[program:celery_beat]
+command=/home/your_user/venv/bin/celery -A project beat -l info
+directory=/home/your_user/django_project
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/celery_beat.err.log
+stdout_logfile=/var/log/celery_beat.out.log
+"your_user" here refers to the user u created on your ubuntu server that has right to ur django project
+"project" here refers to your app folder that directly contains the settings.py and wsgi.py file
+"django_project" here refers to your project folder that contains all your source code
+"venv" is the name of the virtualenv u created
+now save and close this file Then run the command below
+
+sudo supervisorctl reread
+You should get an output like this
+
+celery_beat: available
+celery_worker: available
+Then run
+
+ sudo supervisorctl update
+You should get an output like this
+
+celery_beat: added process group
+celery_worker: added process group
+Any time u make changes to the djangobin.conf file run the above two commands
+
+Now check that celery is now running with the command below
+
+sudo supervisorctl status
+You should get an output like this
+
+celery_beat                      RUNNING   pid 6027, uptime 1:44:03
+celery_worker                    RUNNING   pid 6028, uptime 1:44:03
+You can output the celery_worker log to the console like you have on the development server with the command below
+
+tail celery_worker stderr
+Now anytime your start, stop or restart your server the supervisor will always ensure that all ur celery services are up and running
+
+THE END
+
+I used the article below as a reference for this and you can refer to it too https://www.codementor.io/@overiq/deploying-django-project-to-digitalocean-xt5s538tp
+
+Share
+Follow
+edited May 13, 2022 at 0:05
+answered May 12, 2022 at 23:19
+i-wizard's user avatar
+i-wizard
+19611 silver badge44 bronze badges
+Unfortunately, DigitalOcean's App Platform is a managed service, so it does not offer root access to the server for this to work. – 
+user3605767
+ Jan 23 at 22:28 

@@ -1,0 +1,16 @@
+{% autoescape off %}
+
+Hi, {{ user }},
+
+You have a new account created on Le Recul Hotel admin.
+
+Here are your info to login:
+
+USERNAME: {{ user }}
+Email: {{email}}
+
+Please visit the link below and send a Reset Password request. 
+Provide your email address to receive a link to reset your password.
+Reset Password Link: http://{{ domain }}/auth/password-reset
+
+{% endautoescape %}

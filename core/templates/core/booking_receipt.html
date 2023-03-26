@@ -1,0 +1,26 @@
+{% load i18n %}
+
+{% autoescape off %}
+
+{% blocktrans %} Dear, {{ fullname }}, {% endblocktrans %}
+
+{% trans "Bellow are the details of your booking:" %}
+
+---------------------------------------------------------------------------
+
+Hotel: {{hotel_name}}
+Room: {{room}}
+Number of people: {{n_roomates}}
+Arrival: {{start_on}}
+Departure: {{end_on}}
+
+---------------------------------------------------------------------------
+
+{% blocktrans %} If you need to make change to your booking, please contact: {{ primary_contact_name }} via email: {{ primary_contact_email }} or by phone call at: {{ primary_contact_phone }}. {% endblocktrans %}
+
+{% trans "Sincerly yours," %}
+
+{% blocktrans %} Team {{ hotel_name }}, {% endblocktrans %}
+
+
+{% endautoescape %}

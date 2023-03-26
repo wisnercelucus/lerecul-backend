@@ -1,0 +1,20 @@
+start CELERY SERVER Locally:
+pip install celery
+pip install redis
+
+(Setup a redis server on heroku and get the CELERY_BROKER_URL)
+
+#in the root directory of the project:
+
+celery -A app worker -l info
+
+
+# set up a postgresql data. Please update the settings file with the db details.
+# Update the email backend. Default is MailGun but can change.
+# Update the credentials for AWS bucekt.
+# Add front_url, Root domain. Will need it for email.
+# add domain in allowed host.
+# add front domain in WHITE_LIST for CORS.
+
+#READ the Makefile to start the app.
+# If deploy on HEROKU, update the prod_setting.py

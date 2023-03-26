@@ -1,0 +1,19 @@
+{% autoescape off %}
+
+Hi {{ user }},
+
+You have a new account created by the: {{school}} admin.
+
+Here are your info to login:
+
+SCHOOL INSTANCE: {{ instance }}
+USERNAME: {{ user }}
+Email: {{email}}
+
+Please visit the login page and click on "Reset Password".
+Provide your School Instance and the email address you sign up with to receive a link to reset your password.
+
+Login_Page: http://{{ domain }}/auth/login
+
+
+{% endautoescape %}

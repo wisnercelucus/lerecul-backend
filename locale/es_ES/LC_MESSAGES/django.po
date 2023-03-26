@@ -1,0 +1,442 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR wisnercelucus@gmail.com, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-28 16:49-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: accounts/api/permissions.py:11 accounts/api/permissions.py:18
+msgid "Must be the owner of the account to perform this action."
+msgstr "Debe ser el propietario de la cuenta para realizar esta acción."
+
+#: accounts/api/serializers/auth_token_custom_serializers.py:33
+msgid "We find a user with the email. But the passord is incorrect."
+msgstr "Encontramos un usuario con el correo electrónico. Pero la contraseña es incorrecta."
+
+#: accounts/api/views.py:272 accounts/api/views.py:420
+msgid "Your account is ready"
+msgstr "Tu cuenta está lista"
+
+#: accounts/api/views.py:350
+msgid "The user can not approve him/her self."
+msgstr "El usuario no puede aprobarse a sí mismo."
+
+#: accounts/api/views.py:456 accounts/api/views.py:495
+msgid "Only a superuser can deactivate a superuser profile."
+msgstr "Solo un superusuario puede desactivar un perfil de superusuario."
+
+#: accounts/api/views.py:614
+msgid "Current password incorect"
+msgstr "Contraseña actual incorrecta"
+
+#: accounts/api/views.py:617
+msgid "passwords do not match"
+msgstr "Las contraseñas no coinciden"
+
+#: accounts/api/views.py:754
+msgid "We could not identify the record with id "
+msgstr "No pudimos identificar el registro con id "
+
+#: accounts/api/views.py:755
+msgid "No such object "
+msgstr "No hay tal objeto "
+
+#: accounts/api/views.py:1016
+msgid "Password Reset for"
+msgstr "Restablecimiento de contraseña para"
+
+#: accounts/models.py:27
+msgid "English"
+msgstr "Inglés"
+
+#: accounts/models.py:28
+msgid "French"
+msgstr "Francés"
+
+#: accounts/models.py:29
+msgid "Spanish"
+msgstr "Español"
+
+#: accounts/models.py:33 accounts/models.py:34
+msgid "Male"
+msgstr "Masculino"
+
+#: accounts/models.py:35
+msgid "Other"
+msgstr "Otro"
+
+#: accounts/models.py:36
+msgid "No mention"
+msgstr "Sin mención"
+
+#: accounts/models.py:40
+msgid "Private"
+msgstr "Privado"
+
+#: accounts/models.py:41
+msgid "Public"
+msgstr "Público"
+
+#: accounts/models.py:68
+msgid "The Email must be set"
+msgstr "El correo electrónico debe estar configurado"
+
+#: accounts/models.py:95
+msgid "Superuser must have is_staff=True."
+msgstr "El superusuario debe tener is_staff=True."
+
+#: accounts/models.py:97
+msgid "Superuser must have is_superuser=True."
+msgstr "El superusuario debe tener is_superuser=True."
+
+#: accounts/models.py:100
+msgid "Superuser must have is_admin=True."
+msgstr "El superusuario debe tener is_admin=True."
+
+#: accounts/models.py:128
+msgid "Can approve user role"
+msgstr "Puede aprobar el rol de usuario"
+
+#: accounts/models.py:154
+msgid "Can approve user position"
+msgstr "Puede aprobar la posición del usuario"
+
+#: accounts/models.py:160 accounts/models.py:235
+msgid "email address"
+msgstr "dirección de correo electrónico"
+
+#: accounts/models.py:225
+msgid "Can approve user"
+msgstr "Puede aprobar usuario"
+
+#: accounts/models.py:226
+msgid "Can activate user"
+msgstr "Puede activar el usuario"
+
+#: accounts/models.py:227
+msgid "Can deactivate user"
+msgstr "Puede desactivar el usuario"
+
+#: accounts/models.py:287
+msgid "Can approve user profile"
+msgstr "Puede aprobar el perfil de usuario"
+
+#: accounts/templates/accounts/reset_password_email.html:3
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+"Está recibiendo este correo electrónico porque solicitó un restablecimiento de contraseña para su "
+"cuenta de usuario en %(site_name)s."
+
+#: accounts/templates/accounts/reset_password_email.html:5
+#: accounts/templates/accounts/user_reset_password.html:8
+#: accounts/templates/accounts/user_reset_password.txt:8
+msgid "Please go to the following page and choose a new password:"
+msgstr "Vaya a la siguiente página y elija una nueva contraseña:"
+
+#: accounts/templates/accounts/reset_password_email.html:9
+#: accounts/templates/accounts/user_reset_password.html:12
+#: accounts/templates/accounts/user_reset_password.txt:12
+msgid "Your username, in case you have forgotten:"
+msgstr "Su nombre de usuario, en caso de que lo haya olvidado:"
+
+#: accounts/templates/accounts/reset_password_email.html:11
+#: accounts/templates/accounts/user_reset_password.html:14
+#: accounts/templates/accounts/user_reset_password.txt:15
+msgid "Thanks for using our service!"
+msgstr "¡Gracias por usar nuestro servicio!"
+
+#: accounts/templates/accounts/reset_password_email.html:13
+#, python-format
+msgid "The %(site_name)s team."
+msgstr "El equipo de %(site_name)s."
+
+#: accounts/templates/accounts/user_reset_password.html:4
+#: accounts/templates/accounts/user_reset_password.txt:4
+#, python-format
+msgid ""
+"\n"
+"\n"
+"\tYou're receiving this email because you requested a password reset for "
+"your user account at %(site_name)s. "
+msgstr ""
+"\n"
+"\n"
+"\tEstá recibiendo este correo electrónico porque solicitó un restablecimiento de contraseña para "
+"su cuenta de usuario en %(site_name)s."
+
+#: accounts/templates/accounts/user_reset_password.html:16
+#: accounts/templates/accounts/user_reset_password.txt:17
+#, python-format
+msgid "The %(site_name)s team. "
+msgstr "El equipo de %(site_name)s."
+
+#: accounts/templates/accounts/user_reset_password.txt:13
+msgid "Your Company Instance, in case you’ve forgotten:"
+msgstr "Tu instancia de empresa, en caso de que lo hayas olvidado:"
+
+#: core/api/serializers/booking_serializers.py:36 home/api/views.py:44
+msgid "End date must be in future compared to start date"
+msgstr "La fecha de finalización debe ser futura en comparación con la fecha de inicio"
+
+#: core/api/views/model_lookups_data_views.py:90
+msgid "Record with _id "
+msgstr "Grabar con _id "
+
+#: core/api/views/model_lookups_data_views.py:93
+msgid "Model with name "
+msgstr "Modelo con nombre "
+
+#: core/models.py:40
+msgid "Can approve client"
+msgstr "Puede aprobar el cliente"
+
+#: core/models.py:56
+msgid "Can approve room service"
+msgstr "Puede aprobar el servicio de habitaciones."
+
+#: core/models.py:75
+msgid "Can approve room"
+msgstr "Puede aprobar la habitación"
+
+#: core/models.py:92
+msgid "Can approve booking"
+msgstr "Puede aprobar la reserva"
+
+#: core/models.py:107
+msgid "Can approve coupon"
+msgstr "Puede aprobar cupón"
+
+#: core/models.py:122
+msgid "Can approve special offer"
+msgstr "Puede aprobar oferta especial"
+
+#: core/models.py:140
+msgid "Can approve banner"
+msgstr "Puede aprobar banner"
+
+#: core/models.py:160
+msgid "Can approve activity"
+msgstr "Puede aprobar la actividad"
+
+#: core/models.py:180
+msgid "Can approve strength"
+msgstr "Puede aprobar la fuerza"
+
+#: core/models.py:199
+msgid "Can approve kitchen"
+msgstr "Puede aprobar cocina"
+
+#: core/models.py:221
+msgid "Can approve gallery"
+msgstr "Puede aprobar la galería"
+
+#: core/models.py:242
+msgid "Can approve service"
+msgstr "Puede aprobar el servicio"
+
+#: core/templates/core/booking_receipt.html:5
+#, python-format
+msgid " Dear, %(fullname)s, "
+msgstr " Estimado, %(fullname)s, "
+
+#: core/templates/core/booking_receipt.html:7
+msgid "Bellow are the details of your booking:"
+msgstr "A continuación se muestran los detalles de su reserva:"
+
+#: core/templates/core/booking_receipt.html:19
+#, python-format
+msgid ""
+" If you need to make change to your booking, please contact: "
+"%(primary_contact_name)s via email: %(primary_contact_email)s or by phone "
+"call at: %(primary_contact_phone)s. "
+msgstr ""
+" Si necesita realizar un cambio en su reserva, póngase en contacto con: "
+"%(primary_contact_name)s por correo electrónico: %(primary_contact_email)s o por teléfono "
+"llamar al: %(primary_contact_phone)s. "
+
+
+#: core/templates/core/booking_receipt.html:21
+#: core/templates/core/emails/alert_email_template.html:14
+#: core/templates/core/emails/bug_message_email.html:18
+#: core/templates/core/emails/contact_message_email.html:19
+#: home/templates/home/alert_email_template.html:14
+#: home/templates/home/bug_message_email.html:18
+#: home/templates/home/contact_message_email.html:19
+msgid "Sincerly yours,"
+msgstr "Atentamente,"
+
+#: core/templates/core/booking_receipt.html:23
+#, python-format
+msgid " Team %(hotel_name)s, "
+msgstr " Equipo %(hotel_name)s, "
+
+#: core/templates/core/emails/alert_email_template.html:5
+#: home/templates/home/alert_email_template.html:5
+#, python-format
+msgid " Hi, %(username)s, "
+msgstr " Hola, %(username)s, "
+
+#: core/templates/core/emails/alert_email_template.html:16
+#: home/templates/home/alert_email_template.html:16
+msgid "Team,"
+msgstr "Equipo, "
+
+#: core/templates/core/emails/bug_message_email.html:5
+#: core/templates/core/emails/contact_message_email.html:5
+msgid "Hi, Smartly SMS Team,"
+msgstr "Hola, equipo de Le Recul"
+
+#: core/templates/core/emails/bug_message_email.html:7
+#: home/templates/home/bug_message_email.html:7
+#, python-format
+msgid ""
+" You have received a new new bug of type: %(bug_type)s from: %(full_name)s. "
+msgstr " Ha recibido un nuevo error de tipo: %(bug_type)s de: %(full_name)s. "
+
+#: core/templates/core/emails/bug_message_email.html:9
+#: home/templates/home/bug_message_email.html:9
+msgid "Here is the report message:"
+msgstr "Aquí está el mensaje del informe:"
+
+#: core/templates/core/emails/bug_message_email.html:20
+#: core/templates/core/emails/contact_message_email.html:21
+#: home/templates/home/bug_message_email.html:20
+#: home/templates/home/contact_message_email.html:21
+msgid "Smartly Admin"
+msgstr "Le Recul Administrador"
+
+#: core/templates/core/emails/contact_message_email.html:7
+#, python-format
+msgid ""
+" You have received a new new message from %(last_name)s  %(first_name)s "
+"since %(country)s. "
+msgstr ""
+" Ha recibido un nuevo mensaje nuevo de %(last_name)s %(first_name)s "
+"desde %(country)s."
+
+#: core/templates/core/emails/contact_message_email.html:9
+msgid "Here is the message:"
+msgstr "Aquí está el mensaje:"
+
+#: core/templates/core/emails/contact_message_email.html:17
+#, python-format
+msgid " You can reply to %(last_name)s via the email: %(email)s. "
+msgstr " Puede responder a %(last_name)s a través del correo electrónico: %(email)s. "
+
+#: documents/api/images_views.py:71 documents/api/views.py:73
+msgid "Object does not exist on object: "
+msgstr "El objeto no existe en el objeto: "
+
+#: documents/api/images_views.py:73 documents/api/views.py:75
+msgid "Invalid content type"
+msgstr "Tipo de contenido no válido"
+
+#: documents/api/images_views.py:100 documents/api/views.py:109
+msgid "An unknown error occured."
+msgstr "Un error desconocido ocurrió."
+
+#: home/api/views.py:25 home/api/views.py:161 home/api/views.py:180
+msgid ""
+"We could not find a primary contact for customer care. Ask Le Recul to set a "
+"Primary contact."
+msgstr ""
+"No pudimos encontrar un contacto principal para atención al cliente. Solicite a Le Recul que establezca un "
+"Contacto primario."
+
+#: home/api/views.py:38
+msgid "You must add the start date to make a reservation"
+msgstr "Debes añadir la fecha de inicio para hacer una reserva"
+
+#: home/api/views.py:41
+msgid "You must add the end date to make a reservation"
+msgstr "Debe agregar la fecha de finalización para hacer una reserva"
+
+#: home/api/views.py:47
+msgid "You need a valid email address to book rooms online."
+msgstr "Necesita una dirección de correo electrónico válida para reservar habitaciones en línea."
+
+#: home/api/views.py:50
+msgid "You need to enter your fullname to make a reservation."
+msgstr "Debe ingresar su nombre completo para hacer una reserva."
+
+#: home/api/views.py:53
+msgid "You need to select a room to make a reservation."
+msgstr "Es necesario seleccionar una habitación para hacer una reserva."
+
+#: home/api/views.py:63
+msgid "The room with Id: "
+msgstr "La habitación con identificación: "
+
+#: home/api/views.py:80
+msgid "Booking #"
+msgstr "Reserva #"
+
+#: home/api/views.py:117
+#, python-brace-format
+msgid "{customer.name} has just made a room reservation for: "
+msgstr "{customer.name} acaba de hacer una reserva de habitación para:"
+
+#: home/api/views.py:121
+msgid "New booking alert"
+msgstr "Nueva alerta de reserva"
+
+#: home/api/views.py:164
+msgid "Somone has subscribed to newsletter with the email: "
+msgstr "Alguien se ha suscrito al boletín con el correo electrónico: "
+
+#: home/api/views.py:166
+msgid "New subscriber"
+msgstr "Nuevo suscriptor"
+
+#: home/templates/home/bug_message_email.html:5
+#: home/templates/home/contact_message_email.html:5
+msgid "Hi, Team Le Recul,"
+msgstr "Hola, Equipo Le Recul,"
+
+#: home/templates/home/contact_message_email.html:7
+#, python-format
+msgid " You have received a new new message from %(name)s since %(country)s. "
+msgstr " Ha recibido un nuevo mensaje nuevo de %(name)s desde %(country)s. "
+
+#: home/templates/home/contact_message_email.html:9
+msgid "message: "
+msgstr "mensaje: "
+
+#: home/templates/home/contact_message_email.html:17
+#, python-format
+msgid ""
+" You can reply to %(name)s via the email: %(email)s or call him/her at "
+"%(phone)s. "
+msgstr ""
+" Puede responder a %(name)s a través del correo electrónico: %(email)s o llamarlo al "
+"%(phone)s. "
+
+#: model_meta_data/api/views/model_meta_views.py:217
+#: model_meta_data/api/views/model_meta_views.py:251
+msgid "Object "
+msgstr "Objeto "
+
+#: modelrelations/api/views.py:37 modelrelations/api/views.py:89
+#: modelrelations/api/views.py:124
+msgid "The field"
+msgstr "El campo"
+
+#: modelrelations/api/views.py:41 modelrelations/api/views.py:93
+#: modelrelations/api/views.py:128
+msgid "The field "
+msgstr "El campo "

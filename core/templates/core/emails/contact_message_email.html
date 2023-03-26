@@ -1,0 +1,24 @@
+{% load i18n %}
+
+{% autoescape off %}
+
+{% trans "Hi, Smartly SMS Team," %}
+
+{% blocktrans %} You have received a new new message from {{ last_name }}  {{ first_name }} since {{ country }}. {% endblocktrans %}
+
+{% trans "Here is the message:" %}
+
+---------------------------------------------------------------------------
+
+{{ message }}
+
+---------------------------------------------------------------------------
+
+{% blocktrans %} You can reply to {{ last_name }} via the email: {{ email }}. {% endblocktrans %}
+
+{% trans "Sincerly yours," %}
+
+{% trans "Smartly Admin" %}
+
+
+{% endautoescape %}
